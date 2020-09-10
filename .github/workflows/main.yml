@@ -30,10 +30,7 @@ jobs:
       with:
     # Yarn command
         cmd: install
-        
-    - name: testing
-      run: npm test
-        
+ 
     - name: creating build
       run: yarn build
      
