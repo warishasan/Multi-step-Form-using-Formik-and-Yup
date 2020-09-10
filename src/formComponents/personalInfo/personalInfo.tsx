@@ -83,21 +83,22 @@ const useStyles = makeStyles((theme: Theme) =>
        }}
      >
 
-        {formik =>  ( 
+        {formik => { console.log(formik.errors.lastName)
+          return( 
        
        <Form className = {classes.wrapper} autoComplete="off">
          
-         <Field  error = {!!formik.errors.firstName} className = {classes.fields}  name="firstName" as= {TextField} label = "First Name"  helperText={<ErrorMessage name="firstName"/>}/>
-         <Field error = {!!formik.errors.lastName}  className = {classes.fields} name="lastName" as= {TextField} label = "Last Name"  helperText={<ErrorMessage name="lastName"/>}/>
-         <Field error = {!!formik.errors.email}   className = {classes.fields} name="email" as= {TextField} label = "Email"  helperText={<ErrorMessage name="email"/>}/>
-         <Field error = {!!formik.errors.phone} className = {classes.fields} name="phone" as= {TextField} type = "number" label = "Phone"  helperText={<ErrorMessage name="phone"/>}/>
-         <Field error = {!!formik.errors.city}  className = {classes.fields} name="city"  as= {TextField} label = "City"  helperText={<ErrorMessage name="city"/>}/>
-         <Field error = {!!formik.errors.area} className = {classes.fields}  name="area"  as= {TextField} label = "Area"  helperText={<ErrorMessage name="area"/>}/>
+         <Field  error = {formik.errors.firstName && formik.touched.firstName}  className = {classes.fields}  name="firstName" as= {TextField} label = "First Name"  helperText={<ErrorMessage name="firstName"/>}/>
+         <Field error = {formik.errors.lastName  && formik.touched.lastName}  className = {classes.fields} name="lastName" as= {TextField} label = "Last Name"  helperText={<ErrorMessage name="lastName"/>}/>
+         <Field error = {formik.errors.email  && formik.touched.email}  className = {classes.fields} name="email" as= {TextField} label = "Email"  helperText={<ErrorMessage name="email"/>}/>
+         <Field error = {formik.errors.phone && formik.touched.phone} className = {classes.fields} name="phone" as= {TextField} type = "number" label = "Phone"  helperText={<ErrorMessage name="phone"/>}/>
+         <Field error = {formik.errors.city && formik.touched.city}  className = {classes.fields} name="city"  as= {TextField} label = "City"  helperText={<ErrorMessage name="city"/>}/>
+         <Field error = {formik.errors.area && formik.touched.area} className = {classes.fields}  name="area"  as= {TextField} label = "Area"  helperText={<ErrorMessage name="area"/>}/>
 
 
          <button className =  {classes.button} type="submit" >Next</button>
        </Form>
- )}
+ )}}
      </Formik>
    );
  };
